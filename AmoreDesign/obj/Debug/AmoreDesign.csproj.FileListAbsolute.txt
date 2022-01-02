@@ -25,3 +25,5 @@ C:\Users\Cem\source\repos\AmoreDesign\AmoreDesign\obj\Debug\AmoreDesign.exe.conf
 C:\Users\Cem\source\repos\AmoreDesign\AmoreDesign\obj\Debug\AmoreDesign.csproj.CopyComplete
 C:\Users\Cem\source\repos\AmoreDesign\AmoreDesign\obj\Debug\AmoreDesign.main.resources
 C:\Users\Cem\source\repos\AmoreDesign\AmoreDesign\bin\Debug\FontAwesome.Sharp.dll
+C:\Users\Cem\source\repos\AmoreDesign\AmoreDesign\obj\Debug\AmoreDesign.KayitOl.resources
+C:\Users\Cem\source\repos\AmoreDesign\AmoreDesign\obj\Debug\AmoreDesign.KullaniciKayitOnay.resources

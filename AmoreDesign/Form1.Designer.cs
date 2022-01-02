@@ -40,6 +40,7 @@ namespace AmoreDesign
             this.txtSifre = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.btnKayitOl = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ıconPictureBox1)).BeginInit();
@@ -165,12 +166,27 @@ namespace AmoreDesign
             this.pictureBox2.TabIndex = 9;
             this.pictureBox2.TabStop = false;
             // 
+            // btnKayitOl
+            // 
+            this.btnKayitOl.FlatAppearance.BorderSize = 0;
+            this.btnKayitOl.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnKayitOl.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnKayitOl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(177)))), ((int)(((byte)(177)))));
+            this.btnKayitOl.Location = new System.Drawing.Point(103, 425);
+            this.btnKayitOl.Name = "btnKayitOl";
+            this.btnKayitOl.Size = new System.Drawing.Size(134, 37);
+            this.btnKayitOl.TabIndex = 10;
+            this.btnKayitOl.Text = "Kayit Ol";
+            this.btnKayitOl.UseVisualStyleBackColor = true;
+            this.btnKayitOl.Click += new System.EventHandler(this.btnKayitOl_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(139)))), ((int)(((byte)(251)))));
             this.ClientSize = new System.Drawing.Size(344, 493);
+            this.Controls.Add(this.btnKayitOl);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.panel2);
@@ -205,6 +221,7 @@ namespace AmoreDesign
         private System.Windows.Forms.TextBox txtSifre;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Button btnKayitOl;
     }
 }
 

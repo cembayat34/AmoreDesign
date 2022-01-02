@@ -13,6 +13,14 @@ namespace AmoreDesign
 {
     public partial class Form1 : Form
     {
+
+        MySqlConnection baglanti;
+        MySqlCommand komut;
+        MySqlCommand komut2;
+        MySqlDataAdapter da;
+        MySqlDataReader dr;
+        MySqlDataReader dr2;
+
         public Form1()
         {
             InitializeComponent();
@@ -20,45 +28,67 @@ namespace AmoreDesign
 
         private void btnGirisYap_Click(object sender, EventArgs e)
         {
-            runQuery();
-        }
 
-        private void runQuery()
-        {
-            string cs = "datasource=127.0.0.1;port=3306;username=root;password=;database=amoredesign";
-            var con = new MySqlConnection(cs);
-            MySqlDataReader reader;
+            baglanti = new MySqlConnection("datasource=127.0.0.1;port=3306;username=root;password=;database=amoredesign");
+            MySqlDataReader dr;
             try
             {
-                con.Open();
-                string stm = "SELECT email,sifre FROM kullanicilar WHERE email=@email AND sifre=@sifre";
-                var cmd = new MySqlCommand(stm, con);
+                baglanti.Open();
+                string sorgu = "SELECT email,sifre FROM kullanicilar WHERE email=@email AND sifre=@sifre AND kayit_durum = 1";
+                string sorgu2 = "SELECT kayit_durum FROM kullanicilar WHERE email=@email AND sifre=@sifre";
+                komut = new MySqlCommand(sorgu, baglanti);
+                komut2 = new MySqlCommand(sorgu2, baglanti);
 
-                cmd.Parameters.AddWithValue("@email", txtEmail.Text);
-                cmd.Parameters.AddWithValue("@sifre", txtSifre.Text);
-                reader = cmd.ExecuteReader();
+                komut.Parameters.AddWithValue("@email", txtEmail.Text);
+                komut.Parameters.AddWithValue("@sifre", txtSifre.Text);
+                komut2.Parameters.AddWithValue("@sifre", txtSifre.Text);
+                komut2.Parameters.AddWithValue("@email", txtEmail.Text);
 
-                if (reader.HasRows)
+                
+                dr = komut2.ExecuteReader();
+
+                while (dr.Read())
                 {
-                    while (reader.Read())
+                    if (0 == Convert.ToInt32(dr["kayit_durum"]))
                     {
-                        MessageBox.Show("Bilgiler Dogru Giris Yapiliyor...");
+                        MessageBox.Show("Onay sureci devam ediyor...");
+                        return;
+                        
+                    }
+                    else
+                    {
+                        
+                    }
+                    
+                }
+                baglanti.Close();
+
+                baglanti.Open();
+                dr2 = komut.ExecuteReader();
+
+                if (dr2.HasRows)
+                {
+                    while (dr2.Read())
+                    {
+                       
                         main_form();
                     }
-                } else
+                }
+                else
                 {
                     MessageBox.Show("Bilgiler yanlis");
                 }
 
-                
+
             }
             catch (Exception ex)
             {
 
                 Console.WriteLine("login failed");
             }
-            con.Close();
+            baglanti.Close();
         }
+
 
         private void main_form()
         {
@@ -68,9 +98,22 @@ namespace AmoreDesign
             this.Close();
         }
 
+        private void KayitOl_form()
+        {
+            this.Hide();
+            KayitOl frm = new KayitOl();
+            frm.ShowDialog();
+            this.Close();
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void btnKayitOl_Click(object sender, EventArgs e)
+        {
+            KayitOl_form();
         }
     }
 }

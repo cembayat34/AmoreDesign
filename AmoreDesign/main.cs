@@ -16,5 +16,13 @@ namespace AmoreDesign
         {
             InitializeComponent();
         }
+
+        private void btnKayitOnayla_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            KullaniciKayitOnay frm = new KullaniciKayitOnay();
+            frm.ShowDialog();
+            this.Close();
+        }
     }
 }
